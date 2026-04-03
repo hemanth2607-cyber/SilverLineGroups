@@ -1,0 +1,256 @@
+/* Base Styles & Navigation Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+body {
+    background-color: #000;
+    color: #fff;
+    font-family: 'Segoe UI', sans-serif;
+    overflow: hidden;
+    height: 100vh;
+}
+
+/* Diagonal Maintenance Marquee */
+.diagonal-banner {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 200%;
+    height: 70px;
+    background: #ff3344;
+    color: #000;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    transform: translate(-50%, -50%) rotate(-15deg);
+    z-index: 10000;
+    box-shadow: 0 0 40px rgba(255, 51, 68, 0.5);
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.banner-text {
+    white-space: nowrap;
+    font-size: 1.8rem;
+    animation: marquee 12s linear infinite;
+    padding-right: 50px;
+}
+
+@keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
+
+/* Grid Layout */
+.trade-grid {
+    display: grid;
+    grid-template-areas: 
+        "nav nav"
+        "sidebar main"
+        "footer footer";
+    grid-template-columns: 240px 1fr;
+    grid-template-rows: 80px 1fr 40px;
+    height: 100vh;
+}
+
+/* Navigation & Dropdown */
+.trade-nav {
+    grid-area: nav;
+    display: flex;
+    align-items: center;
+    padding: 0 30px;
+    background: #0a0a0a;
+    border-bottom: 1px solid #1a1a1a;
+    gap: 50px;
+    z-index: 1001;
+}
+
+.nav-logo {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.6rem;
+    letter-spacing: 2px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    height: 100%;
+}
+
+.nav-links li {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.nav-links > li > a {
+    color: rgba(255, 255, 255, 0.5);
+    text-decoration: none;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.85rem;
+    padding: 0 20px;
+}
+
+/* Dropdown Rope Ladder */
+.dropdown-content {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 80px; 
+    left: 0;
+    width: 100%;
+    min-width: 160px;
+    visibility: hidden;
+    transform: rotateX(-90deg);
+    transform-origin: top;
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), visibility 0s linear 0.5s;
+}
+
+.dropdown:hover .dropdown-content {
+    visibility: visible;
+    transform: rotateX(0deg);
+    transition-delay: 0s;
+}
+
+.dropdown-content a {
+    display: block !important;
+    background: #0a0a0a !important;
+    color: #fff !important;
+    padding: 15px 20px !important;
+    text-decoration: none;
+    font-size: 0.75rem;
+    border-left: 4px solid #fff;
+    margin-bottom: 2px;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.dropdown:hover .dropdown-content a { opacity: 1; }
+.dropdown-content a:nth-child(1) { transition-delay: 0.1s; }
+.dropdown-content a:nth-child(2) { transition-delay: 0.2s; }
+.dropdown-content a:nth-child(3) { transition-delay: 0.3s; }
+
+/* Sidebar & Stats */
+.sidebar {
+    grid-area: sidebar;
+    background: #050505;
+    border-right: 1px solid #1a1a1a;
+    padding: 30px 20px;
+}
+
+.sidebar-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.7rem;
+    color: #444;
+    margin-bottom: 20px;
+}
+
+.watchlist-item {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.8rem;
+    margin-bottom: 15px;
+    color: #888;
+}
+
+.down { color: #ff3344; }
+
+/* Main Chart Area */
+.chart-container {
+    grid-area: main;
+    position: relative;
+    background: #000;
+    overflow: hidden;
+}
+
+/* TradingView Style Floating Candles */
+.candle-chart {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center; /* Center-float vertically */
+    gap: 4px;
+    padding: 20px;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.candle {
+    position: relative;
+    width: 8px;
+    min-height: 2px;
+    border-radius: 1px;
+    flex-shrink: 0;
+}
+
+.candle::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 1px;
+    height: 180%; 
+    background: inherit;
+    transform: translate(-50%, -50%);
+    opacity: 0.5;
+}
+
+.candle.up { background: #00ff88; box-shadow: 0 0 10px rgba(0, 255, 136, 0.25); }
+.candle.down { background: #ff3344; box-shadow: 0 0 10px rgba(255, 51, 68, 0.25); }
+
+/* Background Vertical Lines */
+.data-lines-bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    opacity: 0.1;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.v-line {
+    width: 1px;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent, #fff, transparent);
+    animation: verticalPulse 6s ease-in-out infinite;
+}
+
+@keyframes verticalPulse {
+    0%, 100% { transform: translateY(-15%); opacity: 0.1; }
+    50% { transform: translateY(15%); opacity: 1; }
+}
+
+.market-stats {
+    grid-area: footer;
+    background: #0a0a0a;
+    border-top: 1px solid #1a1a1a;
+    display: flex;
+    align-items: center;
+    padding: 0 30px;
+    gap: 40px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.7rem;
+    color: #555;
+}
+
+.meme-watermark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Syncopate', sans-serif;
+    font-size: 5rem;
+    opacity: 0.04;
+    letter-spacing: 20px;
+    z-index: 0;
+}

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SL TRADE | System Locked</title>
+    <link rel="stylesheet" href="trade.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Syncopate:wght@700&display=swap" rel="stylesheet">
+</head>
+<body class="trade-body">
+
+    <div class="diagonal-banner">
+        <div class="banner-text">SYSTEM UNDER MAINTENANCE — ACCESS RESTRICTED — CORE OFFLINE — </div>
+        <div class="banner-text">SYSTEM UNDER MAINTENANCE — ACCESS RESTRICTED — CORE OFFLINE — </div>
+    </div>
+
+    <div class="trade-grid">
+        <nav class="trade-nav">
+            <div class="nav-logo">SL TRADE</div>
+            
+            <ul class="nav-links">
+                <li class="dropdown">
+                    <a href="#">TERMINAL</a>
+                    <div class="dropdown-content">
+                        <a href="#">RECOVERY</a>
+                        <a href="#">LOG_FILES</a>
+                        <a href="#">KERNEL</a>
+                    </div>
+                </li>
+                <li><a href="#">NETWORK</a></li>
+            </ul>
+
+            <div class="balance-bar">
+                <span class="label">WALLET :</span>
+                <span class="value">$ 0.00</span>
+            </div>
+        </nav>
+
+        <aside class="sidebar">
+            <h4 class="sidebar-title">WATCHLIST</h4>
+            <div class="watchlist-item">BTC/USD : <span class="down">OFFLINE</span></div>
+            <div class="watchlist-item">ETH/USD : <span class="down">OFFLINE</span></div>
+            
+            <div class="db-status">
+                <span class="status-dot offline"></span> 
+                <span>SECURED_MODE : ON</span>
+            </div>
+        </aside>
+
+        <main class="chart-container">
+    <div class="data-lines-bg">
+        <div class="v-line"></div>
+        <div class="v-line"></div>
+        <div class="v-line"></div>
+        <div class="v-line"></div>
+        <div class="v-line"></div>
+        <div class="v-line"></div>
+    </div>
+    
+    <div class="candle-chart" id="candleChart"></div>
+
+    <div class="meme-watermark">ACCESS DENIED</div>
+</main>
+
+        <footer class="market-stats">
+            <div class="stat"><span>STATUS:</span> MAINTENANCE</div>
+            <div class="stat"><span>SERVER:</span> Off--</div>
+            <div class="stat"><span>PING:</span> -- ms</div>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="trade.js"></script>
+</body>
+</html>
